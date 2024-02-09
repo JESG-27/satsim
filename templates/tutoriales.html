@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>SATSIM - Tutorial</title>
+{% endblock %}
+
+{% block body %}
+<div class="fullBody">
+    <div class="tuto-container">
+       <div class="tutos">
+            <div class="tuto">
+                <div class="tuto-image">
+                    <img src="{{ url_for('static', filename='images/imgCFDI.png') }}" alt="CFDI">
+                </div>
+                <div class="nameCourse">
+                    <h3>CFDI</h3>
+                    <span>Gratis</span>
+                </div>
+                <div class="description">
+                    <p>Aprende a realizar tu comprobante de ingresos y egresos</p>
+                </div>
+                <div class="take">
+                    <button><a href="/CFDI">Comenzar</a></button> 
+                </div>
+            </div>
+            <div class="tuto">
+                <div class="tuto-image">
+                    <img src="{{ url_for('static', filename='images/imgDeclaracion.png') }}" alt="declaraciones">
+                </div>
+                <div class="nameCourse">
+                    <h3>Declaraciones</h3>
+                    <span>Gratis</span>
+                </div>
+
+                <p>Aprende a realizar tus declaraciones paso a paso de manera didactica</p>
+                <div class="take">
+                    <button><a href="/declaraciones">Comenzar</a></button>
+                </div>
+            </div>
+       </div>
+    </div>
+</div>
+
+{% endblock %}

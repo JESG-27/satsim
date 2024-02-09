@@ -1,0 +1,117 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>SATSIM - Sobre nosotros</title>
+{% endblock %}
+
+{% block body %}
+<div class="header">
+    <h1>Sobre<span class="gradient-text"> Nosotros</span></h1>
+</div>
+
+<div class="sobre-container">
+    <div class="sobre-container1">
+            <div class="teams">
+                <img src="" alt="">
+                <div class="name">Emmanuel Salcido </div>
+                <div class="desig">INCO</div>
+                <div class="about">Estudiante de la carrera de Ingeniería en Computación en el Centro Universitario de Ciencias Exáctas e Ingenierías</div>
+
+                <div class="social-links">
+                    <a href="#"><img src="{{ url_for('static', filename='images/FacebookNegro.png') }}"></a>
+                    <a href="#"><img src="{{ url_for('static', filename='images/LinkedinNegro.png') }}"></a>
+                </div>
+            </div>
+
+            <div class="teams">
+                <img src="" alt="">
+                <div class="name">Anahi Chavez </div>
+                <div class="desig">INCO</div>
+                <div class="about">Estudiante de la carrera de Ingeniería en Computación en el Centro Universitario de Ciencias Exáctas e Ingenierías</div>
+
+                <div class="social-links">
+                    <a href="#"><img src="{{ url_for('static', filename='images/FacebookNegro.png') }}"></a>
+                    <a href="#"><img src="{{ url_for('static', filename='images/LinkedinNegro.png') }}"></a>
+                </div>
+            </div>
+
+            <div class="teams">
+                <img src="" alt="">
+                <div class="name">Jonathan Rodriguez </div>
+                <div class="desig">INCO</div>
+                <div class="about">Estudiante de la carrera de Ingeniería en Computación en el Centro Universitario de Ciencias Exáctas e Ingenierías</div>
+
+                <div class="social-links">
+                    <a href="#"><img src="{{ url_for('static', filename='images/FacebookNegro.png') }}"></a>
+                    <a href="#"><img src="{{ url_for('static', filename='images/LinkedinNegro.png') }}"></a>
+                </div>
+            </div>
+    </div>
+</div>
+
+<div class="Frecuente-container">
+    <div class="Frecuente-content1">
+        <section class="col left">
+            <div class="contactTitle">
+                <h2><span class="gradient-text">Contactanos</span></h2>
+                <p>Mantente en contacto con nosotros</p>
+            </div>
+            <div class="contactInfo">
+
+                <div class="iconGroup">
+                    <div class="icon">
+                        <img class="phone" src="{{ url_for('static', filename='images/phone.png') }}">
+                    </div>
+                    <div class="details">
+                        <span>Teléfono</span>
+                        <span>+52 33 1518 0821 </span>
+                    </div>
+                </div>
+
+                <div class="iconGroup">
+                    <div class="icon">
+                        <img class="email" src="{{ url_for('static', filename='images/email.png') }}">
+                    </div>
+                    <div class="details">
+                        <span>Email</span>
+                        <span>satsimdev@gmail.com</span>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+    <div class="Frecuente-content2 right">
+        <section class="col right">
+            <form class="messageForm" action="https://formsubmit.co/satsimdev@gmail.com" method="POST">
+
+                <div class="inputGroup halfWidth">
+                    <input type="text" name="name" required="required">
+                    <label>Nombre Completo</label>
+                </div>
+
+                <div class="inputGroup halfWidth">
+                    <input type="email" name="" required="required">
+                    <label>Email</label>
+                </div>
+
+                <div class="inputGroup fullWidth">
+                    <input type="text" name="subject" required="required">
+                    <label>Asunto</label>
+                </div>
+
+                <div class="inputGroup fullWidth">
+                    <textarea required="required" name="message"></textarea>
+                    <label>Mensaje</label>
+                </div>
+
+                <div class="inputGroup fullWidth">
+                    <button type="submit">Contactar</button>
+                </div>
+
+                <input type="hidden" name="_next" value="http://localhost:5000/sobre_nosotros">
+                <input type="hidden" name="_captcha" value="false">
+            </form>
+    </div>
+</div>
+
+{% endblock %}

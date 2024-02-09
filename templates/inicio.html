@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>SATSIM - Inicio</title>
+{% endblock %}
+
+{% block body %}
+<div class="main">
+    <div class="text">
+        <h5>¿No sabes como declarar tus impuestos?</h5>
+        <h1><span class="gradient-text">Tutoriales</span> dinámicos,
+            <br>aprende a<span class="gradient-text"> Declarar</span>
+        </h1>
+
+        <p>Aprende a realizar tu contabilidad como emprendedor sin
+            la necesidad de tener que pagar un contador mes con mes.</p>
+
+        <a href="/tutoriales" class="btn">Comenzar</a>
+    </div>
+
+    <div class="main-img">
+        <img src="{{ url_for('static', filename='images/banner-img.png') }}">
+    </div>
+</div>
+
+<div class="Como-container">
+    <img class="questionGif" src="{{ url_for('static', filename='images/Question.gif') }}">
+    <div class="Como-container1">
+        <h1><span class="gradient-text">¿Cómo</span> te <span class="gradient-text"> Enseñamos?</span></h1>
+
+        <p>Aquí podrás aprender a realizar tu contabilidad mediante tutoriales guidados y dinámicos. 
+            Cuando realizas alguno de estos tutoriales, estas involucrando tus habilidades y pensamiento. 
+            Esto te permite comprender mejor el concepto o la habilidad que estas aprendiendo. 
+            Además, el aprendizaje por descubrimiento te permite desarrollar tu pensamiento crítico y tu capacidad de resolver problemas.</p>
+
+        <a href="/sobre_nosotros" class="btn">Sobre Nosotros</a>
+        <a href="/sobre_satsim" class="btn">Sobre SATSIM</a>
+    </div>
+</div>
+
+<div class="preguntas-container">
+    <div class="preguntas-content1">
+        <div class="chatbot-main-img">
+            <img src="{{ url_for('static', filename='images/logoSATSIM.png') }}">
+        </div>
+    </div>
+    <div class="preguntas-text">
+        <h1>¿Te sientes
+            <br><span class="gradient-text"> Confundído?</span>
+        </h1>
+        <h5>Consulta las preguntas frecuentes o dejanos las tuyas para que pronto sean contestadas por nuestro chatbot.
+        </h5>
+
+        <a href="/preguntas-frecuentes" class="btn">Preguntas Frecuentes</a>
+    </div>
+</div>
+{% endblock %}

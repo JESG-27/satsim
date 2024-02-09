@@ -1,0 +1,4711 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 100%;
+    background: #fff;
+    overflow-x: hidden;
+}
+
+*,
+html {
+    --primaryGradient: linear-gradient(93.12deg, #052573 0.52%, #9C1DE7 100%);
+    --secondaryGradient: linear-gradient(268.91deg, #052573 -2.14%, #9C1DE7 99.69%);
+    --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
+    --primary: #052573;
+}
+
+/* CHATBOX
+=============== */
+.chatbox {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    text-align: left;
+    z-index: 100;
+}
+
+/* CONTENT IS CLOSE */
+.chatbox__support {
+    display: none;
+    flex-direction: column;
+    background: #eee;
+    width: 300px;
+    height: 350px;
+    z-index: -123456;
+    opacity: 0;
+    transition: all .5s ease-in-out;
+}
+
+.chat {
+    width: 60px;
+}
+
+/* CONTENT ISOPEN */
+.chatbox--active {
+    display: flex;
+    transform: translateY(-40px);
+    z-index: 123456;
+    opacity: 1;
+    background-color: #F1F1F1;
+    animation-name: slide2;
+    animation-duration: 1.2s;
+    -o-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+}
+
+@keyframes slide2 {
+    0% {
+        transform: translateY(0px);
+        opacity: .98;
+    }
+
+    50% {
+        transform: translateY(-40px);
+        opacity: .98;
+    }
+
+    100% {
+        transform: translateY(-40px);
+        opacity: 1;
+    }
+}
+
+/* BUTTON */
+.chatbox__button {
+    text-align: right;
+}
+
+.send__button {
+    padding: 6px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+
+/* HEADER */
+.chatbox__header {
+    position: sticky;
+    top: 0;
+    background: orange;
+}
+
+
+/* MESSAGES */
+.chatbox__messages {
+    margin-top: auto;
+    display: flex;
+    overflow-y: scroll;
+    flex-direction: column-reverse;
+}
+
+.messages__item {
+    background: orange;
+    max-width: 60.6%;
+    width: fit-content;
+}
+
+.messages__item--operator {
+    margin-left: auto;
+}
+
+.messages__item--visitor {
+    margin-right: auto;
+}
+
+/* FOOTER */
+.chatbox__footer {
+    position: sticky;
+    bottom: 0;
+}
+
+.chatbox__support {
+    background: #f9f9f9;
+    height: 450px;
+    width: 350px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* HEADER */
+.chatbox__header {
+    background: var(--primaryGradient);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: var(--primaryBoxShadow);
+}
+
+.chatbox__image--header {
+    margin-right: 10px;
+}
+
+.chatbox__heading--header {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.chatbox__description--header {
+    font-size: .9rem;
+    color: white;
+}
+
+/* Messages */
+.chatbox__messages {
+    padding: 0 20px;
+}
+
+.messages__item {
+    margin-top: 10px;
+    background: #E0E0E0;
+    padding: 8px 12px;
+    max-width: 70%;
+}
+
+.messages__item--visitor,
+.messages__item--typing {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.messages__item--operator {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background: var(--primary);
+    color: white;
+}
+
+/* FOOTER */
+.chatbox__footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+    background: var(--secondaryGradient);
+    box-shadow: var(--secondaryBoxShadow);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-top: 20px;
+}
+
+.chatbox__footer input {
+    width: 80%;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 30px;
+    text-align: left;
+}
+
+.chatbox__send--footer {
+    color: white;
+    font-size: 15px;
+}
+
+.chatbox__button button,
+.chatbox__button button:focus,
+.chatbox__button button:visited {
+    padding: 10px;
+    background: white;
+    border: none;
+    outline: none;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+/* -------NAVBAR------------------------------------------------------------------------------------------ */
+header {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 85px;
+    padding: 5px 3%;
+}
+
+.header .logo {
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.header .logo img {
+    height: 40px;
+    width: auto;
+    transition: all 1.3s;
+}
+
+.header .logo img:hover {
+    transform: scale(1.1);
+}
+
+.header .nav-links {
+    list-style: none;
+}
+
+.header .nav-links li {
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.header .nav-links a {
+    font-weight: 400;
+    color: #6b6b6b;
+    text-decoration: none;
+}
+
+.header .nav-links li a:hover {
+    color: #052573;
+}
+
+.header .btn button {
+    margin-left: 3px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #fff;
+    padding: 9px 25px;
+    background: linear-gradient(315deg, #9C1DE7 0.52%, #052573 74%);
+    ;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+
+.header .btn button:hover {
+    background: none;
+    border: 1px solid #9C1DE7;
+    color: #052573;
+    transform: scale(1.1);
+}
+
+/* -------BANNER------------------------------------------------------------------------------------------ */
+
+.main {
+    margin: auto 6%;
+    padding: 0;
+    box-sizing: border-box;
+    /*font-size: ;*/
+    list-style: none;
+    text-decoration: none;
+    width: 100%;
+    height: 89vh;
+    /*IMAGEN DE FONDO*/
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2rem;
+}
+
+.text {
+    margin-right: 35px;
+    padding-bottom: 6%;
+}
+
+.text h5 {
+    color: #052573;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.text h1 {
+    font-size: 3.80rem;
+    font-weight: 700;
+    color: black;
+    line-height: 1.2;
+    margin: 15px 0;
+}
+
+.gradient-text {
+    background: linear-gradient(315deg, #9C1DE7 0.52%, #052573 74%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text p {
+    font-size: 15px;
+    color: #6b6b6b;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    line-height: 28px;
+    margin-bottom: 2.25rem;
+}
+
+.text a {
+    display: inline-block;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    padding: 12px 30px;
+    border-radius: 10px;
+    background: linear-gradient(315deg, #9C1DE7 0.52%, #052573 74%);
+    transition: all .42s;
+    text-decoration: none;
+}
+
+
+.main-img {
+    position: relative;
+    width: 100px;
+    height: auto;
+    margin-left: 5%;
+    padding-bottom: 5%;
+}
+
+.main-img img {
+    max-width: 800px;
+    width: 450px;
+    height: auto;
+    animation-name: slide;
+    animation-duration: 4s;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.text a:hover {
+    background: none;
+    border: 2px solid #9C1DE7;
+    color: #052573;
+    transform: scale(1.1);
+}
+
+@keyframes slide {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* COMO TE ENSEÑAMOS */
+/* ---- Contenido ----*/
+.Como-container {
+    width: 100%;
+
+    justify-content: center;
+    text-align: center;
+    height: 92vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.Como-container1 {
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+
+.Como-container1 h1 {
+    font-size: 4.90rem;
+    font-weight: 700;
+    color: black;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.Como-container1 p {
+    font-size: 16px;
+    color: #6b6b6b;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    line-height: 28px;
+    margin-bottom: 2.25rem;
+    padding-bottom: 20px;
+}
+
+.Como-container1 a {
+    display: inline-block;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    padding: 12px 30px;
+    border-radius: 10px;
+    background: linear-gradient(315deg, #9C1DE7 0.52%, #052573 74%);
+    transition: all .42s;
+    text-decoration: none;
+    margin-left: 25px;
+    width: 210px;
+}
+
+.Como-container1 a:hover {
+    background: none;
+    border: 2px solid #9C1DE7;
+    color: #052573;
+    transform: scale(1.1);
+}
+
+
+.questionGif {
+    width: 100%;
+    height: 92vh;
+}
+
+/* PREGUNTAS FRECUENTES */
+.chatbot-main-img {
+    position: relative;
+    width: 100px;
+    height: auto;
+    padding-top: 20px;
+}
+
+.chatbot-main-img img {
+    max-width: 400px;
+    width: 450px;
+    height: auto;
+    animation-name: slide;
+    animation-duration: 4s;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+
+.preguntas-text h5 {
+    color: #052573;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.preguntas-text h1 {
+    font-size: 3.80rem;
+    font-weight: 700;
+    color: black;
+    line-height: 1.2;
+    margin: 0;
+    margin-bottom: 25px;
+}
+
+.preguntas-text p {
+    font-size: 15px;
+    color: #6b6b6b;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    line-height: 28px;
+    margin-bottom: 2.25rem;
+}
+
+.preguntas-text a {
+    display: inline-block;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    padding: 12px 30px;
+    border-radius: 10px;
+    background: linear-gradient(315deg, #9C1DE7 0.52%, #052573 74%);
+    transition: all .42s;
+    text-decoration: none;
+    margin-top: 2.25rem;
+}
+
+.preguntas-text a:hover {
+    background: none;
+    border: 2px solid #9C1DE7;
+    color: #052573;
+    transform: scale(1.1);
+}
+
+.preguntas-container {
+    height: 85vh;
+    margin: 0;
+    padding: 0;
+    /*font-family: Verdana, Geneva, sans-serif;*/
+    box-sizing: border-box;
+}
+
+.preguntas-container {
+    margin: auto 5%;
+    display: flex;
+}
+
+/* Dos columnas principales*/
+.preguntas-content1 {
+    width: 47%;
+    margin: auto;
+}
+
+.preguntas-text {
+    width: 53%;
+    margin: auto;
+}
+
+/* PIE DE PAGINA */
+footer {
+    bottom: 0;
+    left: 0;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--dark);
+    color: white;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(5, 37, 115, 1) 35%, rgba(156, 29, 231, 1) 100%);
+    opacity: .9;
+    margin-top: 40px;
+}
+
+.copyright-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.copyright {
+    font-size: 12px;
+    opacity: 0.7;
+    font-weight: 400;
+    padding: 10px 0;
+}
+
+.footer-menus {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 40%;
+}
+
+.footer-container {
+    height: fit-content;
+    width: 100%;
+    padding: 3rem 6rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-content-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+footer .website-logo {
+    margin-bottom: 1.2rem;
+    font-size: calc(1vw + 20px);
+}
+
+.footer-info,
+.menu-item-footer {
+    margin: 0.2rem 0;
+    opacity: 0.7;
+    color: white;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.menu-item-footer:hover {
+    opacity: 1;
+}
+
+.menu-title {
+    font-size: var(--medium-text-font);
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 100%;
+}
+
+.social-link {
+    height: 100%;
+    width: 30px;
+    background-image: url('/static/images/FacebookBlanco.png');
+    background-size: 70%;
+    background-position: center;
+    margin-right: 1rem;
+    background-repeat: no-repeat;
+}
+
+.social-link:hover {
+    opacity: 0.7;
+}
+
+footer .social-link:nth-of-type(2) {
+    background-image: url('/static/images/LinkedinBlanco.png');
+}
+
+footer .social-link:nth-of-type(3) {
+    /*Nth of type inside that container*/
+    background-image: url('/static/images/InstagramBlanco.png');
+}
+
+.footer-img {
+    width: 50%;
+    padding-bottom: 10px;
+    margin-left: -3px;
+}
+
+.footer-container span {
+    font-weight: 500;
+}
+
+/*MEDIA QUERY*/
+@media (max-width: 768px) {
+
+    .footer-container {
+        padding: 2rem;
+        flex-direction: column;
+    }
+
+    .footer-content-container {
+        width: 100%;
+        padding: 2rem 0;
+        border-bottom: 1px solid #2A2A2A;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-content-container:nth-of-type(1) {
+        align-items: flex-start;
+    }
+
+    .footer-content-container:nth-of-type(3) {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .footer-menus {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        border-bottom: 1px solid #2A2A2A;
+    }
+
+    .footer-menus .footer-content-container:nth-of-type(1) {
+        width: 45%;
+        align-items: flex-start;
+        border-bottom: none;
+    }
+
+    .footer-menus .footer-content-container:nth-of-type(2) {
+        width: 45%;
+        align-items: flex-start;
+        border-bottom: none;
+    }
+}
+
+/* -------PREGUNTAS FRECUENTES------------------------------------------------------------------------------------------ */
+.preguntas-container h5 {
+    color: #052573;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.preguntas-container h1 {
+    font-size: 3.80rem;
+    font-weight: 700;
+    color: black;
+    line-height: 1.2;
+    margin: 20px 0;
+}
+
+.preguntas-container p {
+    font-size: 15px;
+    color: #6b6b6b;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    line-height: 28px;
+    margin-bottom: 2.25rem;
+}
+
+
+.Frecuente-container {
+    margin: 0;
+    padding: 0;
+    /*font-family: Verdana, Geneva, sans-serif;*/
+    box-sizing: border-box;
+    height: 90vh;
+}
+
+/* ---- Contenido ----*/
+.Frecuente-container {
+    margin: 5% 5%;
+    display: flex;
+    height: 70vh;
+}
+
+/* Dos columnas principales*/
+.Frecuente-content1 {
+    width: 40%;
+    margin: 0 auto;
+}
+
+.Frecuente-content2 {
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 1%;
+}
+
+.containerPreguntas {
+    width: 100%;
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 4%;
+}
+
+.Frecuente-content2 .row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1210px;
+}
+
+.Frecuente-content2 section.right .messageForm {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 30px;
+}
+
+.Frecuente-content2 section.right .inputGroup {
+    margin: 16px 0px;
+    position: relative;
+}
+
+.messageForm .halfWidth {
+    flex-basis: 48%;
+}
+
+.messageForm .fullWidth {
+    flex-basis: 100%;
+}
+
+.messageForm input,
+.messageForm textarea {
+    width: 100%;
+    font-size: 16px;
+    padding: 2px 0px;
+    background-color: #fff;
+    color: black;
+    border: none;
+    border-bottom: 2px solid #666;
+    outline: none;
+}
+
+.messageForm textarea {
+    resize: none;
+    height: 160px;
+    display: block;
+}
+
+.messageForm .messageBox {
+    height: 60px;
+}
+
+textarea::-webkit-scrollbar {
+    width: 5px;
+}
+
+textarea::-webkit-scrollbar-track {
+    background-color: #1e1e1e;
+    border-radius: 15px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: #052573;
+    border-radius: 15px;
+}
+
+.inputGroup label {
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    color: #888;
+    font-size: 16px;
+    transition: 0.4s;
+    pointer-events: none;
+}
+
+.inputGroup:nth-child(4) label {
+    top: 2px;
+}
+
+.inputGroup input:focus~label,
+.inputGroup textarea:focus~label,
+.inputGroup input:valid~label,
+.inputGroup textarea:valid~label {
+    transform: translateY(-30px);
+    font-size: 16px;
+}
+
+.inputGroup button {
+    display: inline-block;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    padding: 12px 30px;
+    border-radius: 10px;
+    background: linear-gradient(315deg, #9C1DE7 0.52%, #052573 74%);
+    transition: all .42s;
+    text-decoration: none;
+    width: 210px;
+    border: none;
+    margin-top: 5px;
+}
+
+.inputGroup button:hover {
+    background: none;
+    border: 2px solid #9C1DE7;
+    color: #052573;
+    transform: scale(1.1);
+}
+
+@media(max-width: 1100px) {
+    .messageForm .halfWidth {
+        flex-basis: 100%;
+    }
+}
+
+@media(max-width: 900px) {
+    .containerPreguntas .row {
+        flex-wrap: wrap;
+    }
+
+    .row section.left,
+    .row section.right {
+        flex-basis: 100%;
+        margin: 0px;
+    }
+}
+
+.row section.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.row section.left {
+    flex-basis: 35%;
+    min-width: 320px;
+    margin-right: 60px;
+}
+
+.row section.right {
+    flex-basis: 60%;
+}
+
+section.left .contactTitle h2 {
+    position: relative;
+    font-size: 28px;
+    color: black;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+section.left .contactTitle h2::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 1px;
+    background-color: #888;
+    top: 120%;
+    left: 0;
+}
+
+section.left .contactTitle h2::after {
+    content: '';
+    position: absolute;
+    width: 25%;
+    height: 3px;
+    background-color: #052573;
+    top: calc(120% - 1px);
+    left: 0;
+}
+
+section.left .contactTitle p {
+    font-size: 17px;
+    color: #052573;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    padding-bottom: 22px;
+}
+
+section.left .contactInfo {
+    margin-bottom: 16px;
+}
+
+.contactInfo .iconGroup {
+    display: flex;
+    align-items: center;
+    margin: 25px 0px;
+}
+
+.iconGroup .icon {
+    width: 45px;
+    height: 45px;
+    border: 2px solid #9C1DE7;
+    border-radius: 50%;
+    margin-right: 20px;
+    position: relative;
+}
+
+.iconGroup .icon img {
+    font-size: 20px;
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.phone {
+    width: 55%;
+    opacity: .4;
+}
+
+.email {
+    width: 65%;
+    opacity: .4;
+}
+
+.iconGroup .details span {
+    display: block;
+    color: #888;
+    font-weight: 500;
+}
+
+.iconGroup .details span:nth-child(1) {
+    text-transform: uppercase;
+    color: #ccc;
+}
+
+/* -------SOBRE NOSOTROS------------------------------------------------------------------------------------------ */
+.sobre-container {
+    width: 100%;
+
+    justify-content: center;
+    text-align: center;
+    height: 80vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.sobre-container1 {
+    width: 93%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    text-align: center;
+
+}
+
+.header {
+    width: 100%;
+    justify-content: left;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.header h1 {
+    font-size: 3.80rem;
+    font-weight: 700;
+    color: black;
+    line-height: 1.2;
+    margin: 40px 2.2%;
+}
+
+.teams {
+    margin: 17px;
+    padding: 22px;
+    max-width: 30%;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: 0.4s;
+    box-sizing: border-box;
+    border: solid 2px #052473e1;
+}
+
+.teams:hover {
+    background: #9d1de738;
+    border-radius: 12px;
+    border: none;
+}
+
+.teams img {
+    width: 200px;
+    height: 200px;
+    margin: 7px;
+}
+
+.name {
+    padding: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.desig {
+    font-style: italic;
+    color: #888;
+}
+
+.about {
+    margin: 20px 0;
+    font-weight: lighter;
+    color: #4e4e4e;
+}
+
+
+.social-links a {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    transition: .4s;
+    margin-right: 5px;
+}
+
+.social-links a:hover {
+    transform: scale(1.5);
+}
+
+.social-links img {
+    width: 75%;
+    height: 75%;
+    opacity: .4;
+}
+
+@media screen and (max-width: 600px) {
+    .teams {
+        max-width: 100%;
+    }
+}
+
+
+/* -------MENU TUTORIALES------------------------------------------------------------------------------------------ */
+.fullBody {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    min-height: 85vh;
+    display: grid;
+    place-items: center;
+}
+
+.title h1 {
+    font-size: 2.80rem;
+    font-weight: 700;
+    color: black;
+    line-height: 1.2;
+}
+
+.tuto-container {
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.tutos {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5%;
+}
+
+.tuto {
+    position: relative;
+    width: 40%;
+    height: 100%;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 20px 40px;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.tuto:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tuto-image {
+    width: 100%;
+    height: 60%;
+    display: grid;
+    place-items: center;
+}
+
+.tuto-image img {
+    width: 100%;
+}
+
+.nameCourse {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 5% auto;
+}
+
+.nameCourse h3 {
+    font-size: 2em;
+    text-transform: capitalize;
+    color: #1b2741;
+}
+
+.nameCourse span {
+    font-size: 1.5em;
+    color: #9C1DE7;
+}
+
+.desciption {
+    width: 100%;
+    display: flex;
+    margin: 5% auto;
+
+}
+
+.desciption p {
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.take {
+    width: 100%;
+    display: flex;
+    bottom: 20px;
+    right: 20px;
+    margin: 5% auto;
+}
+
+.take a {
+    text-decoration: none;
+    color: #ffeaed;
+}
+
+.take button {
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: none;
+    background: linear-gradient(315deg, #9C1DE7 0.52%, #052573 74%);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.take button:hover {
+    transform: scale(1.1);
+}
+
+/* -------TUTORIAL CFDI PORTADA CURSO------------------------------------------------------------------------------------------ */
+.CFDI-container {
+    margin: 0;
+    padding: 0;
+    /*font-family: Verdana, Geneva, sans-serif;*/
+    box-sizing: border-box;
+    height: 90vh;
+}
+
+/* ---- Letras ----*/
+h1.CFDI {
+    font-size: 28px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 600;
+    line-height: 35.4px;
+    padding-bottom: .8rem;
+    letter-spacing: 1px;
+}
+
+h3.CFDI {
+    font-size: 23px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 200;
+    line-height: 32.4px;
+    padding-right: 5rem;
+    padding-bottom: 4%;
+}
+
+p.CFDI {
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: justify;
+    padding-right: 3rem;
+}
+
+h2.CFDI {
+    font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 600;
+    line-height: 32.4px;
+    padding-bottom: 3%;
+}
+
+/* ---- Contenido ----*/
+.CFDI-container {
+    margin: 2% 5%;
+    display: flex;
+}
+
+/* Dos columnas principales*/
+.CFDI-content1 {
+    width: 55%;
+    margin: 0 auto;
+    padding-left: 3%;
+}
+
+.CFDI-content2 {
+    width: 45%;
+    margin: 0 auto;
+}
+
+/* Demas columnas */
+.CFDI-content {
+    width: 50%;
+    margin: 0 auto;
+}
+
+
+/* ---- Div izquierda ----*/
+/* Requisitos */
+.CFDI-container-requisitos {
+    margin: 0% 0% 3% 4%;
+    display: flex;
+}
+
+/* Duración y precio */
+.CFDI-container-icons {
+    margin: 0%;
+    display: flex;
+    padding: 2%;
+    margin-right: 3rem;
+    box-shadow: 0 0 0 4px #fff, 0 6px 2px #ccc, 0 -6px 2px #ccc;
+    margin-bottom: 4%;
+}
+
+.list {
+    list-style: none;
+    font-size: 20px;
+}
+
+.list li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888888;
+}
+
+.icon-list {
+    width: 42px;
+    height: 42px;
+    margin-right: 1rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+
+}
+
+/* ---- Div derecha ----*/
+.right {
+    margin: 0 auto;
+}
+
+.view-img {
+    width: 75%;
+    padding-bottom: 7%;
+}
+
+
+.refe {
+    text-decoration: none;
+    color: #fff;
+    font-size: 25px;
+    letter-spacing: 2.5px;
+}
+
+.css-arrow--green {
+    position: relative;
+    display: inline-block;
+    outline: none;
+    overflow: hidden;
+    height: 3.8rem;
+    width: 73.5%;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 7px;
+    border: none;
+    box-shadow: 0 3px 1px -6px #ccc, 0 2px 2px 0 #ccc, 0 4px 6px 0 #ccc;
+    background-color: #4CAF50;
+}
+
+.css-arrow--green:hover {
+    border-radius: 5px;
+    padding-right: 24px;
+    padding-left: 8px;
+}
+
+.css-arrow--green:hover:after {
+    opacity: 1;
+    right: 10px;
+}
+
+.css-arrow--green:after {
+    content: "\00BB";
+    position: absolute;
+    opacity: 0;
+    font-size: 40px;
+    line-height: 40px;
+    top: 6.9px;
+    right: -15px;
+    transition: 0.4s;
+}
+
+/* -------TUTORIAL CFDI----------------------------------------------------------------------------------- */
+.body-tutorial {
+    background-color: rgb(243, 243, 244);
+    overflow: hidden;
+}
+
+/* BUTTON HOME*/
+.img-arrow {
+    width: 40px;
+    opacity: .550
+}
+
+.arrow__button {
+    position: fixed;
+    top: 35px;
+    right: 40px;
+}
+
+/*TUTORIAL*/
+.name-course {
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 32.4px;
+    margin-left: 30px;
+    color: gray;
+}
+
+/*Instructions part*/
+.tutorial_text_header {
+    height: 60px;
+    width: 80%;
+    background-color: #581B98;
+    padding: 0 15px 0 15px;
+    border-bottom: 4px solid rgb(243, 243, 244);
+    margin: auto;
+    display: flex;
+}
+
+.tutorial_text {
+    color: white;
+    text-align: center;
+    margin: auto;
+}
+
+
+.tuto-window {
+    background-color: rgb(243, 243, 244);
+    width: 300px;
+    margin: auto;
+    width: 80%;
+    height: 530px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.captura {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.capturaCorta {
+    width: 100%;
+    height: 65%;
+    display: block;
+}
+
+.capturaCorta4 {
+    width: 100%;
+    height: 50%;
+    display: block;
+}
+
+
+/* -------BOTONES TUTORIAL CFDI ------------------------------------------------------------------------------------------ */
+.inicioBoton {
+    background: none;
+    width: 40px;
+}
+
+.atras {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    border: none;
+    background: none;
+    background-image: url('/static/images/atras.png');
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+/* POSICION 0 */
+.pos0Factura {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    bottom: 454px;
+    left: 287px;
+    width: 55px;
+    height: 65px;
+}
+
+/* POSICION 1 */
+.pos1Servicios {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 740px;
+    height: 30px;
+    bottom: 507px;
+    left: 150px;
+}
+
+/* POSICION 2 */
+.pos2Servicio {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 740px;
+    height: 30px;
+    bottom: 345px;
+    left: 155px;
+}
+
+/* POSICION 3 */
+.pos3Ejecutar {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 170px;
+    height: 39px;
+    bottom: 80px;
+    left: 503px;
+}
+
+/* POSICION 4 */
+.pos4RFC {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 350px;
+    height: 28px;
+    bottom: 851px;
+    left: 293px;
+    padding-left: 9px;
+}
+
+.pos4RFC:focus {
+    outline: none;
+}
+
+.pos4RFC:valid {
+    background-color: #fff;
+}
+
+.pos4Password {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 350px;
+    height: 28px;
+    bottom: 807px;
+    left: -61px;
+    padding-left: 9px;
+}
+
+.pos4Password:focus {
+    outline: none;
+}
+
+
+.pos4Password:valid {
+    background-color: #fff;
+}
+
+.pos4Captcha {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 350px;
+    height: 28px;
+    bottom: 655px;
+    left: -415px;
+    padding-left: 9px;
+}
+
+.pos4Captcha:focus {
+    outline: none;
+}
+
+.pos4Captcha:valid {
+    background-color: #fff;
+}
+
+.pos4Enviar {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100px;
+    height: 41px;
+    bottom: 641px;
+    left: 588px;
+}
+
+/* POSICION 5 */
+.pos5Engrane {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    bottom: 500px;
+    left: 960px;
+}
+
+/* POSICION 6 */
+.pos6Config {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 290px;
+    height: 35px;
+    bottom: 425px;
+    left: 719px;
+}
+
+/* POSICION 7 */
+.pos7RFC {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 280px;
+    height: 28px;
+    bottom: 647px;
+    left: 100px;
+    text-align: center;
+}
+
+.pos7RFC:focus {
+    outline: none;
+}
+
+.pos7Nombre {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 580px;
+    height: 28px;
+    bottom: 647px;
+    left: 112px;
+    text-align: center;
+}
+
+.pos7Nombre:focus {
+    outline: none;
+}
+
+.pos7Comercial {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 874px;
+    height: 28px;
+    bottom: 627px;
+    left: 101px;
+    text-align: center;
+}
+
+.pos7Comercial:focus {
+    outline: none;
+}
+
+.pos7Guardar {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 82px;
+    height: 39px;
+    bottom: 222px;
+    left: 38px;
+}
+
+/* Validación de registro de emisor */
+.validEngrane {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    bottom: 850px;
+    left: 960px;
+}
+
+.validRFC {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 280px;
+    height: 28px;
+    bottom: 691px;
+    left: 100px;
+    text-align: center;
+}
+
+.validRFC:focus {
+    outline: none;
+}
+
+.validNombre {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 580px;
+    height: 28px;
+    bottom: 691px;
+    left: 112px;
+    text-align: center;
+}
+
+.validNombre:focus {
+    outline: none;
+}
+
+/* POSICION 8 */
+.pos8RFC {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 283px;
+    height: 28px;
+    bottom: 686px;
+    left: 100px;
+    text-align: center;
+}
+
+.pos8RFC:focus {
+    outline: none;
+}
+
+.pos8Nombre {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 579px;
+    height: 28px;
+    bottom: 686px;
+    left: 110px;
+    text-align: center;
+}
+
+.pos8Nombre:focus {
+    outline: none;
+}
+
+.pos8Basica {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 290px;
+    height: 35px;
+    bottom: 817px;
+    left: 720px;
+}
+
+/* CAPTURA CORTA */
+.capturaCortaProducto {
+    width: 100%;
+    height: 45%;
+    display: block;
+}
+
+
+/* POSICION 9 */
+.pos9Selec {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 390px;
+    height: 35px;
+    bottom: 1445px;
+    left: 100px;
+}
+
+/* POSICION 10 */
+.pos10Regimen {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 390px;
+    height: 25px;
+    bottom: 1400px;
+    left: 100px;
+}
+
+/* POSICION 11 */
+.pos11Fav {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 35px;
+    bottom: 1452px;
+    left: 590px;
+}
+
+/* POSICION 12 */
+.pos12Selec {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 390px;
+    height: 35px;
+    bottom: 1305px;
+    left: 100px;
+}
+
+/* POSICION 13 */
+.pos13Ingreso {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 390px;
+    height: 25px;
+    bottom: 1265px;
+    left: 102px;
+}
+
+/* POSICION 14 */
+.pos14Fav {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 35px;
+    bottom: 1310px;
+    left: 591px;
+}
+
+/* POSICION 15*/
+.pos15Selec {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 390px;
+    height: 35px;
+    bottom: 1183px;
+    left: 101px;
+}
+
+/* POSICION 16 */
+.pos16Codigo {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 390px;
+    height: 25px;
+    bottom: 1143px;
+    left: 102px;
+}
+
+/* POSICION 17 */
+.pos17Fav {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 35px;
+    bottom: 1187px;
+    left: 591px;
+}
+
+/* POSICION 18*/
+.pos18Selec {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 390px;
+    height: 35px;
+    bottom: 1068px;
+    left: 101px;
+}
+
+/* POSICION 19 */
+.pos19Peso {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 467px;
+    height: 25px;
+    bottom: 1025px;
+    left: 105px;
+}
+
+/* CAPTURA CORTA2 */
+.capturaCorta2 {
+    width: 100%;
+    height: 75%;
+    display: block;
+}
+
+/* POSICION 20 */
+.pos20Fav {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 35px;
+    bottom: 1071px;
+    left: 591px;
+}
+
+/* POSICION 21*/
+.pos21Selec {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 390px;
+    height: 35px;
+    bottom: 935px;
+    left: 101px;
+}
+
+/* POSICION 22 */
+.pos22Efectivo {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 380px;
+    height: 25px;
+    bottom: 895px;
+    left: 105px;
+}
+
+/* POSICION 23 */
+.pos23Fav {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 35px;
+    bottom: 940px;
+    left: 591px;
+}
+
+/* POSICION 24*/
+.pos24Selec {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 390px;
+    height: 35px;
+    bottom: 818px;
+    left: 101px;
+}
+
+/* POSICION 25 */
+.pos25Pago {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 380px;
+    height: 25px;
+    bottom: 783px;
+    left: 105px;
+}
+
+/* POSICION 26 */
+.pos26Fav {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 35px;
+    bottom: 824px;
+    left: 591px;
+}
+
+/* CAPTURA CORTA3 */
+.capturaCorta3 {
+    width: 100%;
+    height: 80%;
+    display: block;
+}
+
+/* CAPTURA CORTA PRODUCTO 2 */
+.capturaCortaProducto2 {
+    width: 100%;
+    height: 35%;
+    display: block;
+}
+
+/* POSICION 27 */
+.pos27Engrane {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    bottom: 1642px;
+    left: 960px;
+}
+
+/* POSICION 28 */
+.pos28Avanzada {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 290px;
+    height: 35px;
+    bottom: 1587px;
+    left: 720px;
+}
+
+/* POSICION 29 */
+.pos29Check {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    bottom: 1165px;
+    left: 450px;
+}
+
+/* POSICION 29 */
+.pos30Check {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    bottom: 908px;
+    left: 450px;
+}
+
+/* POSICION 31 */
+.pos31Guardar {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 90px;
+    height: 40px;
+    bottom: 62px;
+    left: 75px;
+}
+
+/* POSICION 32 */
+.pos32Generar {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 90px;
+    height: 40px;
+    bottom: 1378px;
+    left: 870px;
+}
+
+/* Capturas en Grises*/
+#capturaGris {
+    filter: brightness(48.5%);
+}
+
+#capturaGrisCorta {
+    filter: brightness(48.5%);
+}
+
+/* POSICION 33 */
+.pos33Nueva {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 265px;
+    height: 25px;
+    bottom: 1339px;
+    left: 692px;
+}
+
+/* POSICION 34 */
+/* CAPTURA CORTA CFDI*/
+.capturaCortaCFDI {
+    width: 100%;
+    height: 40%;
+    display: block;
+}
+
+.capturaCortaCFDI2 {
+    width: 100%;
+    height: 25%;
+    display: block;
+}
+
+.pos34Check {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    bottom: 726px;
+    left: 136px;
+}
+
+/* POSICION 35 */
+.pos35Per {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    width: 245px;
+    height: 20px;
+    bottom: 916px;
+    left: 114px;
+    padding-left: 6px;
+    color:#666;
+}
+
+.pos35Per:focus {
+    outline: none;
+}
+
+.pos35Pos opcion {
+    background-color: #fff;
+}  
+
+.pos35Mes {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    width: 245px;
+    height: 20px;
+    bottom: 916px;
+    left: 146px;
+    padding-left: 6px;
+    color:#666;
+}
+
+.pos35Mes:focus {
+    outline: none;
+}
+
+.pos35Pos opcion {
+    background-color: #fff;
+}  
+
+#anio_factura_global {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 245px;
+    height: 20px;
+    bottom: 916px;
+    left: 176px;
+    padding-left: 6px;
+    color:#666;
+}
+
+#anio_factura_global:focus {
+    outline: none;
+}
+
+#anio_factura_global:valid {
+    background-color: #fff;
+}
+
+.espacio0 {
+    position: relative;
+    height: 200px;
+    bottom: 915px;
+    z-index: 0;
+    padding: 0px 85px;
+}
+
+.pos35Agregar {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 80px;
+    height: 40px;
+    bottom: 851px;
+    left: 105px;
+}
+
+/* POSICION 36 */
+.pos36Des {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 179px;
+    height: 20px;
+    bottom: 2067px;
+    left: 127px;
+    padding-left: 10px;
+    font-size: 12PX;
+    color:#666;
+}
+
+.pos36Des:focus {
+    outline: none;
+}
+
+.pos36Des:valid {
+    background-color: #fff;
+}
+
+
+#prodServi{
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 179px;
+    height: 20px;
+    bottom: 2067px;
+    left: 145px;
+    padding-left: 10px;
+    font-size: 12PX;
+    color:#666;
+    
+}
+
+#prodServi:focus {
+    outline: none;
+}
+
+#prodServi:valid {
+    background-color: #fff;
+}
+
+
+#unidadMed {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 179px;
+    height: 20px;
+    bottom: 2067px;
+    left: 165px;
+    padding-left: 10px;
+    font-size: 12PX;
+    color:#666;
+}
+
+#unidadMed:focus {
+    outline: none;
+}
+
+#unidadMed:valid {
+    background-color: #fff;
+}
+
+#cantidad {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 179px;
+    height: 20px;
+    bottom: 2011px;
+    left: -422px;
+    padding-left: 10px;
+    font-size: 12PX;
+    color:#666;
+}
+
+#cantidad:focus {
+    outline: none;
+}
+
+#cantidad:valid {
+    background-color: #fff;
+}
+
+#valorUni {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 179px;
+    height: 20px;
+    bottom: 2011px;
+    left: -404px;
+    padding-left: 10px;
+    font-size: 12PX;
+    color:#666;
+}
+
+#valorUni:focus {
+    outline: none;
+}
+
+#valorUni:valid {
+    background-color: #fff;
+}
+
+#importe {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: #eee;
+    border: none;
+    width: 179px;
+    height: 20px;
+    bottom: 2033px;
+    left: 532px;
+    padding-left: 10px;
+    font-size: 12PX;
+    color:#666;
+}
+
+#importe:focus {
+    outline: none;
+}
+
+#importe:valid {
+    background-color: #eee;
+}
+
+#descuento {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 179px;
+    height: 20px;
+    bottom: 2033px;
+    left: 550px;
+    padding-left: 10px;
+    font-size: 12PX;
+    background-color: #fff;
+}
+
+#descuento:focus {
+    outline: none;
+}
+
+#descuento:valid {
+    background-color: #fff;
+}
+
+#objImpuesto {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background-color: none;
+    border: none;
+    width: 179px;
+    height: 20px;
+    bottom: 1978px;
+    right: 239px;
+    padding-left: 10px;
+    font-size: 12PX;
+    color:#666;
+}
+
+#objImpuesto:focus {
+    outline: none;
+}
+
+#objImpuesto:valid {
+    background-color: #fff;
+}
+
+#numeroIden {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 179px;
+    height: 20px;
+    bottom: 2001px;
+    right:  220px;
+    padding-left: 10px;
+    font-size: 12PX;
+    color:#666;
+}
+
+#numeroIden:focus {
+    outline: none;
+}
+
+#numeroIden:valid {
+    background-color: #fff;
+}
+
+#tasa {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 10px;
+    height: 10px;
+    bottom: 1815px;
+    right: 567px;
+}
+
+#save {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 75px;
+    height: 36px;
+    bottom: 1062px;
+    right: 637px;
+}
+
+.espacio1 {
+    position: relative;
+    height: 200px;
+    bottom: 2216px;
+    z-index: 0;
+    padding: 0px 85px;
+}
+
+/* POSICION 37 */
+#anio {
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 245px;
+    height: 20px;
+    padding-left: 10px;
+    font-size: 12PX;
+    color:#666;
+    margin-left: 585px;
+    margin-bottom: 2px;
+}
+
+.anio:focus {
+    outline: none;
+}
+
+#anio:valid {
+    background-color: #fff;
+}
+
+#clienteF {
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 245px;
+    height: 20px;
+    padding-left: 10px;
+    font-size: 12PX;
+    color:#666;
+    margin-left: 27px;
+   
+}
+
+#clienteF:focus {
+    outline: none;
+}
+
+#clienteF:valid {
+    background-color: #fff;
+}
+
+#usofactura {
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 245px;
+    height: 20px;
+    padding-left: 10px;
+    font-size: 12PX;
+    color:#666;
+    margin-left: 30px;
+    margin-top: 85px;
+    margin-bottom: 31px;
+    
+}
+
+#usofactura:focus {
+    outline: none;
+}
+
+#usofactura:valid {
+    background-color: #fff;
+}
+
+
+#razonsocial {
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 245px;
+    height: 20px;
+    padding-left: 10px;
+    font-size: 12PX;
+    color:#666;
+    margin-left: 30px;
+}
+
+#razonsocial:focus {
+    outline: none;
+}
+
+#razonsocial:valid {
+    background-color: #fff;
+} 
+
+#correo { 
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 245px;
+    height: 20px;
+    padding-left: 10px;
+    font-size: 12PX;
+    color:#666;
+    margin-left: 27px;
+    margin-bottom: 31px;
+}
+
+#correo:focus {
+    outline: none;
+}
+
+#correo:valid {
+    background-color: #fff;
+}
+
+#codigop {
+    
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 245px;
+    height: 20px;
+    padding-left: 10px;
+    font-size: 12PX;
+    color:#666;
+    margin-left: 30px;
+}
+
+#codigop:focus {
+    outline: none;
+}
+
+#codigop:valid {
+    background-color: #fff;
+}
+
+#regimenfiscal {
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 245px;
+    height: 20px;
+    
+    padding-left: 10px;
+    font-size: 12PX;
+    color:#666;
+    margin-left: 306px;
+}
+
+#regimenfiscal:focus {
+    outline: none;
+}
+
+#regimenfiscal:valid {
+    background-color: #fff;
+}
+
+.espacio2 {
+    position: relative;
+    height: 200px;
+    bottom: 1077px;
+    z-index: 0;
+    padding: 0px 85px;
+}
+
+.pos37sellar {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 70px;
+    height: 31px;
+    bottom: 748px;
+    left: 250px;
+}
+
+/* POSICION 38 */
+#key {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 70px;
+    height: 30px;
+    bottom: 655px;
+    left: 770px;
+}
+
+#fiel {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 370px;
+    height: 20px;
+    bottom: 841px;
+    left: 150px;
+}
+
+#abrir {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 76px;
+    height: 23px;
+    bottom: 619px;
+    left: 371px;
+}
+
+#cer {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 70px;
+    height: 30px;
+    bottom: 607px;
+    left: 770px;
+}
+
+#fiel2 {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 370px;
+    height: 20px;
+    bottom: 833px;
+    left: 150px;
+}
+
+#abrir2 {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 76px;
+    height: 23px;
+    bottom: 613px;
+    left: 371px;
+}
+
+#contrasena {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 675px;
+    height: 18px;
+    bottom: 700px;
+    left: 86px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+#contrasena:focus {
+    outline: none;
+}
+
+#contrasena:valid {
+    background-color: none;
+}
+
+#conf {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 83px;
+    height: 30px;
+    bottom: 571px;
+    left: 8px;
+}
+
+#fir {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 62px;
+    height: 30px;
+    bottom: 571px;
+    left: 97px;
+}
+
+#desc {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 30px;
+    height: 20px;
+    bottom: 621px;
+    left: 107px;
+}
+
+#vista {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 70px;
+    height: 20px;
+    bottom: 835px;
+    left: 715px;
+}
+
+/* AVISO */
+.capturaNav {
+    width: 100%;
+    height: 15%;
+    display: block; 
+}
+
+#buscarKey {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 70px;
+    height: 30px;
+    bottom: 243px;
+    left: 761px;
+}
+
+#Fiel_ {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 380px;
+    height: 15px;
+    bottom: 418px;
+    left: 151px;
+}
+
+#claveprivada {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 380px;
+    height: 15px;
+    bottom: 432px;
+    left: 151px;
+}
+
+#abrirkey {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 70px;
+    height: 19px;
+    bottom: 213px;
+    left: 375px;
+}
+
+#buscarCer {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 70px;
+    height: 30px;
+    bottom: 191px;
+    left: 761px;
+}
+
+#cer_ {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 380px;
+    height: 15px;
+    bottom: 431px;
+    left: 151px;
+}
+
+#abrircer {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 70px;
+    height: 19px;
+    bottom: 213px;
+    left: 375px;
+}
+
+#contrasena2 {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 650px;
+    height: 18px;
+    bottom: 285px;
+    left: 236px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+#contrasena2:focus {
+    outline: none;
+}
+
+#contrasena2:valid {
+    background-color: none;
+}
+
+#confirmar {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 90px;
+    height: 30px;
+    bottom: 158px;
+    left: 680px;
+}
+
+#firmarAviso {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 66px;
+    height: 30px;
+    bottom: 158px;
+    left: 768px;
+}
+
+#TermCondiSiguiente {
+    display:none;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 80px;
+    height: 30px;
+    bottom: 152px;
+    left: 685px;
+}
+
+/* POSICION 39 */
+.terminar {
+    display: flex;
+    margin: 0 auto;
+    border: none;
+    padding: 15px 0px;
+}
+
+.terminar a {
+    display: inline-block;
+    color: #fff;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    padding: 12px 30px;
+    border-radius: 10px;
+    background: linear-gradient(315deg, #9C1DE7 0.52%, #052573 74%);
+    transition: all .42s;
+    text-decoration: none;
+}
+
+.terminar a:hover {
+    background: none;
+    border: 2px solid #9C1DE7;
+    color: #052573;
+}
+
+/* Declaraciones -----------------------------------------------------------------------------------------------*/
+#selec {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* POSICION 0 */
+
+.dec0Dec {
+    width: 79px;
+    height: 69px;
+    bottom: 710px;
+    left: 166px;
+}
+
+/* POSICION 1 */
+
+.dec1Reg {
+    width: 760px;
+    height: 28px;
+    bottom: 526px;
+    left: 155px;
+}
+
+/* POSICION 2 */
+
+#opcionRSC {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 760px;
+    height: 28px;
+    bottom: 492px;
+    left: 155px;
+}
+
+.dec2Ini {
+    width: 80px;
+    height: 30px;
+    bottom: 581px;
+    left: 588px;
+}
+
+/* POSICION 3 */
+#RFC_login {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    border: none;
+    width: 349px;
+    height: 20px;
+    bottom: 898px;
+    left: 317px;
+    text-align: left;
+    padding-left: 9px;
+    color: #666;
+}
+
+#RFC_login:focus {
+    outline: none;
+}
+
+#RFC_login:valid {
+    background-color: #fff;
+}
+
+
+#contrasena_login {
+    position: relative;
+    cursor: pointer;
+    border: none;
+    width: 349px;
+    height: 20px;
+    bottom: 865px;
+    left: -35px;
+    text-align: left;
+    padding-left: 9px;
+    color: #666;
+}
+
+#contrasena_login:focus {
+    outline: none;
+}
+
+#contrasena_login:valid {
+    background-color: #fff;
+}
+
+#captcha_login {
+    position: relative;
+    cursor: pointer;
+    border: none;
+    width: 349px;
+    height: 20px;
+    bottom: 747px;
+    left: -389px;
+    text-align: left;
+    padding-left: 9px;
+    color: #666;
+}
+
+#captcha_login:focus {
+    outline: none;
+}
+
+#captcha_login:valid {
+    background-color: #fff;
+}
+
+#enviar_login {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 84px;
+    height: 32px;
+    bottom: 737px;
+    left: 587px;
+}
+
+/* POSICION 4 */
+#presentar_decla {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 140px;
+    height: 35px;
+    bottom: 426px;
+    left: 97px;
+}
+
+#periodicidad_decla {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 200px;
+    height: 20px;
+    bottom: 286px;
+    left: 331px;
+}
+
+#periodicidad_mensual {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 200px;
+    height: 15px;
+    bottom: 253px;
+    left: 331px;
+}
+
+#periodo_decla {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 200px;
+    height: 20px;
+    bottom: 286px;
+    left: 785px;
+}
+
+#periodo_noviembre {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 201px;
+    height: 12px;
+    bottom: 130px;
+    left: 784px;
+}
+
+#tipo_declaracion {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 200px;
+    height: 20px;
+    bottom: 260px;
+    left: 331px;
+}
+
+#tipo_normal {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 201px;
+    height: 12px;
+    bottom: 228px;
+    left: 331px;
+}
+
+#siguiente_decla {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 97px;
+    height: 33px;
+    bottom: 36px;
+    left: 489px;
+}
+
+/* POSICION 5 */  
+#iniciar_isr {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 184px;
+    height: 88px;
+    bottom: 202px;
+    left: 335px;
+}
+
+/* POSICION 6 */  
+#copropiedad {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 174px;
+    height: 20px;
+    bottom: 212px;
+    left: 480px;
+}
+
+#total_ingresos {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 174px;
+    height: 15px;
+    bottom: 165px;
+    left: 480px;
+}
+
+#mostrar_total_ingresos {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 170px;
+    height: 20px;
+    bottom: 172px;
+    left: 480px;
+}
+
+#cerrar_total_ingresos {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 72px;
+    height: 21px;
+    bottom: 42px;
+    left: 966px;
+}
+
+#devoluciones_desc_bon {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 113px;
+    height: 20px;
+    bottom: 147px;
+    left: 690px;
+}
+
+#dec_devo_bonif_por_copropiedad {
+    position: relative;
+    cursor: pointer;
+    border: none;
+    width: 200px;
+    height: 16px;
+    padding-left: 9px;
+    font-size: 10px;
+    color:#666;
+    bottom: 269px;
+    left: 468px;
+}
+
+#dec_devo_bonif_por_copropiedad:focus {
+    outline: none;
+}
+
+#dec_devo_bonif_por_copropiedad:valid {
+    background-color: #fff;
+    color: #666;
+}
+
+#cerrar_dec_devo_bonif {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 80px;
+    height: 24px;
+    bottom: 168px;
+    left: 764px;
+}
+
+/* POSICION 7 */  
+#mostrar_ingresos_disminuir {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 113px;
+    height: 20px;
+    bottom: 120px;
+    left: 690px;
+}
+
+#agregar_ingresos_disminuir {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 88px;
+    height: 24px;
+    bottom: 460px;
+    left: 40px;
+}
+
+#seleccionar_ingresos_disminuir {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 230px;
+    height: 16px;
+    bottom: 428px;
+    left: 266px;
+}
+
+#sin_ingreso_disminuir {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 330px;
+    height: 15px;
+    bottom: 395px;
+    left: 264px;
+}
+
+#importe_disminuir {
+    position: relative;
+    cursor: pointer;
+    border: none;
+    width: 233px;
+    height: 16px;
+    padding-left: 9px;
+    font-size: 10px;
+    color:#666;
+    bottom: 433px;
+    left: 756px;
+}
+
+#importe_disminuir:focus {
+    outline: none;
+}
+
+#importe_disminuir:valid {
+    background-color: #fff;
+    color: #666;
+} 
+
+#guardar_sin_ingreso_disminuir {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 90px;
+    height: 22px;
+    bottom: 391px;
+    left: 203px;
+}
+
+#cerrar_ingreso_disminuir {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 80px;
+    height: 24px;
+    bottom: 252px;
+    left: 967px;
+}
+
+/* POSICION 8 */  
+#mostrar_ingresos_adicionales {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 113px;
+    height: 20px;
+    bottom: 95px;
+    left: 690px;
+}
+
+#agregar_ingresos_adicionales {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 88px;
+    height: 24px;
+    bottom: 460px;
+    left: 40px;
+}
+
+#seleccionar_ingresos_adicionales {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 230px;
+    height: 16px;
+    bottom: 428px;
+    left: 266px;
+}
+
+#sin_ingreso_adicional {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 330px;
+    height: 15px;
+    bottom: 395px;
+    left: 264px;
+}
+
+#importe_adicional {
+    position: relative;
+    cursor: pointer;
+    border: none;
+    width: 233px;
+    height: 16px;
+    padding-left: 9px;
+    font-size: 10px;
+    color:#666;
+    bottom: 433px;
+    left: 756px;
+}
+
+#importe_adicional:focus {
+    outline: none;
+}
+
+#importe_adicional:valid {
+    background-color: #fff;
+    color: #666;
+} 
+
+#guardar_sin_ingreso_adicional {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 90px;
+    height: 22px;
+    bottom: 391px;
+    left: 203px;
+}
+
+#cerrar_ingreso_adicional {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 80px;
+    height: 24px;
+    bottom: 252px;
+    left: 967px;
+}
+
+/* POSICION 9 */  
+#mostrar_ingresos_totales {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 113px;
+    height: 20px;
+    bottom: 69px;
+    left: 690px;
+}
+
+#agregar_ingresos_totales {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 88px;
+    height: 24px;
+    bottom: 388px;
+    left: 40px;
+}
+
+#seleccionar_ingresos_totales {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 230px;
+    height: 16px;
+    bottom: 358px;
+    left: 266px;
+}
+
+#actividad_empresarial {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 348px;
+    height: 16px;
+    bottom: 324px;
+    left: 266px;
+}
+
+#total_ingresos2 {
+    position: relative;
+    cursor: pointer;
+    border: none;
+    width: 231px;
+    height: 16px;
+    padding-left: 9px;
+    font-size: 10px;
+    color:#666;
+    bottom: 362px;
+    left: 756px;
+}
+
+#total_ingresos:focus {
+    outline: none;
+}
+
+#total_ingresos:valid {
+    background-color: #fff;
+    color: #666;
+} 
+
+#guardar_ingreso_total {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 90px;
+    height: 22px;
+    bottom: 320px;
+    left: 205px;
+}
+
+#cerrar_ingreso_total {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 77px;
+    height: 22px;
+    bottom: 202px;
+    left: 968px;
+}
+
+/* POSICION 10 */  
+#determinacion {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 103px;
+    height: 22px;
+    bottom: 271px;
+    left: 198px;
+}
+
+#mostrar_isr_retenido {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 113px;
+    height: 20px;
+    bottom: 110px;
+    left: 690px;
+}
+
+#isr_retenido_valor {
+    position: relative;
+    cursor: pointer;
+    border: none;
+    width: 202px;
+    height: 15px;
+    padding-left: 9px;
+    font-size: 10px;
+    color: #666;
+    bottom: 129px;
+    left: 462px;
+}
+
+#isr_retenido_valor:focus {
+    outline: none;
+}
+
+#isr_retenido_valor:valid {
+    background-color: #fff;
+    color: #666;
+} 
+
+#cerar_isr_retenido {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 77px;
+    height: 22px;
+    bottom: 39px;
+    left: 759px;
+}
+
+/* POSICION 11 */  
+#pago {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 57px;
+    height: 26px;
+    bottom: 274px;
+    left: 320px;
+}
+
+#compensaciones_aplicar {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 160px;
+    height: 16px;
+    bottom: 263px;
+    left: 482px;
+}
+
+#no_compensaciones_aplicar {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 164px;
+    height: 16px;
+    bottom: 217px;
+    left: 482px;
+}
+
+#guardar_isr {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 87px;
+    height: 26px;
+    bottom: 450px;
+    left: 877px;
+}
+
+/* POSICION 12 */  
+#iva_simplificado {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 184px;
+    height: 88px;
+    bottom: 202px;
+    left: 560px;
+}
+
+/* POSICION 13 */ 
+#mostrar_iva_simp {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 112px;
+    height: 19px;
+    bottom: 230px;
+    left: 690px;
+}
+
+#IVA_acreditable {
+    position: relative;
+    cursor: pointer;
+    border: none;
+    width: 203px;
+    height: 15px;
+    padding-left: 9px;
+    font-size: 10px;
+    color: #666;
+    bottom: 417px;
+    left: 467px;
+}
+
+#IVA_acreditable:focus {
+    outline: none;
+}
+
+#IVA_acreditable:valid {
+    background-color: #fff;
+    color: #666;
+}
+
+#IVA_acreditable_2  {
+    position: relative;
+    cursor: pointer;
+    border: none;
+    width: 202px;
+    height: 15px;
+    padding-left: 9px;
+    font-size: 10px;
+    color: #666;
+    bottom: 378px;
+    left: 261px;
+}
+
+#IVA_acreditable_2:focus {
+    outline: none;
+}
+
+#IVA_acreditable_2:valid {
+    background-color: #fff;
+    color: #666;
+}
+
+#cerrar_IVA_acreditable {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 77px;
+    height: 22px;
+    bottom: 275px;
+    left: 555px;
+}
+
+#pago_IVA {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 57px;
+    height: 26px;
+    bottom: 510px;
+    left: 230px;
+}
+
+/* POSICION 14 */ 
+#compensacion {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 160px;
+    height: 16px;
+    bottom: 289px;
+    left: 482px;
+}
+
+#compensacion_no {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 163px;
+    height: 16px;
+    bottom: 243px;
+    left: 482px;
+}
+
+#estimulos {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 160px;
+    height: 16px;
+    bottom: 262px;
+    left: 482px;
+}
+
+#estimulos_no {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 162px;
+    height: 16px;
+    bottom: 218px;
+    left: 482px;
+}
+
+#guardar_iva {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 87px;
+    height: 26px;
+    bottom: 450px;
+    left: 877px;
+}
+
+/* POSICION 15 */ 
+#enviar_declaracion {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 126px;
+    height: 20px;
+    bottom: 100px;
+    left: 527px;
+}
+
+#si_declaracion {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 52px;
+    height: 27px;
+    bottom: 97px;
+    left: 601px;
+}
+
+#descargar {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100px;
+    height: 28px;
+    bottom: 447px;
+    left: 883px;
+}
+
+#finalizar {
+    display: flex;
+    margin: 0 auto;
+    border: none;
+    padding: 15px 0px;
+}
+
+#finalizar a {
+    display: inline-block;
+    color: #fff;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    padding: 12px 30px;
+    border-radius: 10px;
+    background: linear-gradient(315deg, #9C1DE7 0.52%, #052573 74%);
+    transition: all .42s;
+    text-decoration: none;
+}
+
+#finalizar a:hover {
+    background: none;
+    border: 2px solid #9C1DE7;
+    color: #052573;
+}
+
+/* Large screens -----------------------------------------------------------------------------------------------*/
+@media only screen and (min-width : 1920px) {
+    .name-course {
+        font-size: 14px;
+    }
+    
+    .tuto-window {
+        height: 850px;
+        width: 85%;
+    }
+
+    .tutorial_text_header {
+        height: 75px;
+        width: 85%;
+        margin-top: 20px;
+    }
+
+    /* Boton Home */
+    .arrow__button {
+        top: 52px;
+        right: 27px;
+    }
+
+    .inicioBoton {
+        background: none;
+        width: 40px;
+    }
+
+    /* Boton Atras */
+    .atras {
+        bottom: 30px;
+        left: 30px;
+
+        width: 50px;
+        height: 50px;
+    }
+
+    .capturaCorta {
+        height: 60%;
+    }
+
+    .captura {
+        height: 95%;
+    }
+
+    /* POSICION 0 */
+    .pos0Factura {
+        bottom: 700px;
+        left: 435px;
+        width: 80px;
+        height: 95px;
+    }
+
+    /* POSICION 1 */
+    .pos1Servicios {
+        width: 1150px;
+        height: 40px;
+        bottom: 768px;
+        left: 230px;
+    }
+
+    /* POSICION 2 */
+    .pos2Servicio {
+        width: 500px;
+        height: 30px;
+        bottom: 520px;
+        left: 257px;
+    }
+
+    /* POSICION 3 */
+    .pos3Ejecutar {
+
+        width: 242px;
+        height: 42px;
+        bottom: 115px;
+        left: 770px;
+    }
+
+    /* POSICION 4 */
+    .pos4RFC {
+        width: 585px;
+        height: 45px;
+        bottom: 1297px;
+        left: 439px;
+        padding-left: 14px;
+        font-size: 24px;
+    }
+
+    .pos4Password {
+        width: 585px;
+        height: 45px;
+        bottom: 1231px;
+        left: -152px;
+        padding-left: 14px;
+        font-size: 24px;
+    }
+
+    .pos4Captcha {
+        width: 585px;
+        height: 45px;
+        bottom: 1075px;
+        left: 439px;
+        padding-left: 14px;
+        font-size: 24px;
+    }
+
+    .pos4Enviar {
+        width: 130px;
+        height: 60px;
+        bottom: 980px;
+        left: 303px;
+    }
+
+    /*AVISO*/
+    #imgAviso {
+        height: 80%;
+    }
+
+    #imgAviso2 {
+        height: 60%;
+    }
+
+    /* POSICION 5 */
+    .pos5Engrane {
+        width: 50px;
+        height: 40px;
+        bottom: 753px;
+        left: 1450px;
+    }
+
+    /* POSICION 6 */
+    .pos6Config {
+        width: 420px;
+        height: 35px;
+        bottom: 712px;
+        left: 1090px;
+    }
+
+    /* POSICION 7 */
+    .pos7RFC {
+        width: 408px;
+        height: 35px;
+        bottom: 980px;
+        left: 160px;
+        font-size: 18px;
+        color: #666;
+    }
+
+    .pos7Nombre {
+        width: 852px;
+        height: 35px;
+        bottom: 980px;
+        left: 192px;
+        font-size: 18px;
+        color: #666;
+    }
+
+    .pos7Comercial {
+        width: 1294px;
+        height: 30px;
+        bottom: 934px;
+        left: 160px;
+        font-size: 18px;
+        color: #666;
+    }
+
+    .pos7Guardar {
+        width: 113px;
+        height: 46px;
+        bottom: 325px;
+        left: 83px;
+    }
+
+    /* Validación de registro de emisor */
+    .validEngrane {
+        width: 50px;
+        height: 40px;
+        bottom: 1343px;
+        left: 1450px;
+    }
+
+    .validRFC {
+        width: 408px;
+        height: 35px;
+        bottom: 1080px;
+        left: 160px;
+        font-size: 18px;
+        color: #666;
+    }
+
+    .validNombre {
+        width: 852px;
+        height: 35px;
+        bottom: 1080px;
+        left: 192px;
+        font-size: 18px;
+        color: #666;
+    }
+
+    /* POSICION 8 */
+    .pos8RFC {
+        width: 408px;
+        height: 35px;
+        bottom: 1021px;
+        left: 160px;
+        font-size: 18px;
+        color: #666;
+    }
+
+    .pos8Nombre {
+        width: 852px;
+        height: 35px;
+        bottom: 1021px;
+        left: 192px;
+        font-size: 18px;
+        color: #666;
+    }
+
+    .pos8Basica {
+        width: 420px;
+        height: 35px;
+        bottom: 1222px;
+        left: 1089px;
+    }
+
+
+    /* POSICION 9 */ 
+    .pos9Selec {
+        width: 563px;
+        height: 38px;
+        bottom: 2029px;
+        left: 163px;
+    }
+
+    #img65 {
+        height: 65%;
+    }
+
+    .capturaCortaProducto {
+        height: 35%;
+    }
+
+    /* POSICION 10 */
+    .pos10Regimen {
+        width: 563px;
+        height: 28px;
+        bottom: 2049px;
+        left: 163px;
+    }
+
+    /* POSICION 11 */
+    .pos11Fav {
+        width: 40px;
+        height: 35px;
+        bottom: 2125px;
+        left: 900px;
+    }
+
+    /* POSICION 12 */
+    .pos12Selec {
+        width: 563px;
+        height: 35px;
+        bottom: 1899px;
+        left: 164px;
+    }
+
+    /* POSICION 13 */
+    .pos13Ingreso {
+        width: 563px;
+        height: 25px;
+        bottom: 1835px;
+        left: 164px;
+    }
+
+    /* POSICION 14 */
+    .pos14Fav {
+        width: 40px;
+        height: 35px;
+        bottom: 1905px;
+        left: 900px;
+    }
+
+    /* POSICION 15*/
+    .pos15Selec {
+        width: 563px;
+        height: 35px;
+        bottom: 1710px;
+        left: 164px;
+    }
+
+    /* POSICION 16 */
+    .pos16Codigo {
+        width: 563px;
+        height: 25px;
+        bottom: 1653px;
+        left: 164px;
+    }
+
+    /* POSICION 17 */
+    .pos17Fav {
+        width: 40px;
+        height: 35px;
+        bottom: 1717px;
+        left: 900px;
+    }
+
+    /* POSICION 18*/
+    .pos18Selec {
+        width: 563px;
+        height: 35px;
+        bottom: 1538px;
+        left: 164px;
+    }
+
+    /* POSICION 19 */
+    .pos19Peso {
+        width: 580px;
+        height: 25px;
+        bottom: 1593px;
+        left: 164px;
+    }
+
+    /* POSICION 20 */
+    .pos20Fav {
+        width: 40px;
+        height: 35px;
+        bottom: 1663px;
+        left: 900px;
+    }
+
+    /* POSICION 21*/
+    .pos21Selec {
+        width: 563px;
+        height: 35px;
+        bottom: 1448px;
+        left: 164px;
+    }
+
+    /* POSICION 22 */
+    .pos22Efectivo {
+        width: 580px;
+        height: 25px;
+        bottom: 1385px;
+        left: 167px;
+    }
+
+    /* POSICION 23 */
+    .pos23Fav {
+        width: 40px;
+        height: 35px;
+        bottom: 1450px;
+        left: 900px;
+    }
+
+    /* POSICION 24*/
+    .pos24Selec {
+        width: 563px;
+        height: 35px;
+        bottom: 1260px;
+        left: 164px;
+    }
+
+    /* POSICION 25 */
+    .pos25Pago {
+        width: 580px;
+        height: 25px;
+        bottom: 1206px;
+        left: 167px;
+    }
+
+    /* POSICION 26 */
+    .pos26Fav {
+        width: 40px;
+        height: 35px;
+        bottom: 1266px;
+        left: 900px;
+    }
+
+    /* POSICION 27 */
+    .pos27Engrane {
+        width: 50px;
+        height: 40px;
+        bottom: 2537px;
+        left: 1450px;
+    }
+
+    /* POSICION 28 */
+    .pos28Avanzada {
+        width: 420px;
+        height: 35px;
+        bottom: 2454px;
+        left: 1087px;
+    }
+
+    /* POSICION 29 */
+    .pos29Check {
+        width: 30px;
+        height: 30px;
+        bottom: 1755px;
+        left: 684px;
+    }
+
+    /* POSICION 30 */
+    .pos30Check {
+        width: 30px;
+        height: 30px;
+        bottom: 1360px;
+        left: 684px;
+    }
+
+    /* POSICION 31 */
+    .pos31Guardar {
+        width: 115px;
+        height: 50px;
+        bottom: 93px;
+        left: 122px;
+    }
+
+    /* POSICION 32 */
+    .pos32Generar {
+        width: 110px;
+        height: 40px;
+        bottom: 2073px;
+        left: 1323px;
+    }
+
+    /* POSICION 33 */
+    .pos33Nueva {
+        width: 403px;
+        height: 35px;
+        bottom: 2022px;
+        left: 1035px;
+    }
+
+    /* POSICION 34 */
+    .pos34Check {
+        width: 30px;
+        height: 30px;
+        bottom: 1112px;
+        left: 212px;
+    }    
+
+        /* POSICION 35 */
+    .pos35Per {
+        width: 372px;
+        height: 30px;
+        bottom: 1421px;
+        font-size: 18px;
+        padding-left: 18px;
+        left: 167px;
+    }
+
+    .pos35Mes {
+        width: 372px;
+        height: 30px;
+        bottom: 1421px;
+        font-size: 18px;
+        padding-left: 18px;
+        left: 211px;
+    }
+
+    #anio_factura_global {
+        width: 372px;
+        height: 30px;
+        bottom: 1421px;
+        font-size: 18px;
+        padding-left: 18px;
+        left: 255px;
+    }
+
+    .pos35Agregar {
+        width: 124px;
+        height: 61px;
+        bottom: 1191px;
+        left: 158px;
+    }
+
+    .espacio0 {
+        position: relative;
+        height: 200px;
+        bottom: 1418px;
+        z-index: 0;
+        padding: 0px 138px;
+    }
+
+    /* DATOS CLIENTE */
+    #anio {
+        width: 374px;
+        height: 35px;
+        padding-left: 18px;
+        font-size: 18px;
+        margin-left: 870px;
+        margin-bottom: 2px;
+    }
+    
+    #clienteF {
+        width: 374px;
+        height: 35px;
+        padding-left: 18px;
+        font-size: 18px;
+        margin-left: 29px;
+    }
+
+    #usofactura {
+        width: 369px;
+        height: 35px;
+        padding-left: 18px;
+        font-size: 18px;
+        margin-left: 46px;
+        margin-top: 134px;
+        margin-bottom: 49px;
+        
+    }
+
+    #razonsocial {
+        width: 369px;
+        height: 35px;
+        padding-left: 18px;
+        font-size: 18px;
+        margin-left: 44px;
+    }
+    
+    #correo { 
+        width: 372px;
+        height: 35px;
+        padding-left: 18px;
+        font-size: 18px;
+        margin-left: 29px;
+        margin-bottom: 50px;
+    }
+    
+    #codigop {
+        width: 372px;
+        height: 35px;
+        padding-left: 18px;
+        font-size: 18px;
+        margin-left: 45px;
+    }
+    
+    #regimenfiscal {
+        width: 372px;
+        height: 35px;
+        padding-left: 18px;
+        font-size: 18px;
+        margin-left: 450px;
+    }
+    
+
+    /* POSICION 36 */
+    .espacio1 {
+        position: relative;
+        height: 200px;
+        bottom: 3380px;
+        z-index: 0;
+        padding: 0px 138px;
+    }
+
+    .pos36Des {
+        width: 266px;
+        height: 34px;
+        bottom: 3034px;
+        left: 192px;
+        padding-left: 18px;
+        font-size: 18px;
+    }
+
+    #prodServi{
+        width: 266px;
+        height: 34px;
+        bottom: 3034px;
+        left: 225px;
+        padding-left: 18px;
+        font-size: 18px;
+    }
+
+    #unidadMed {
+        width: 266px;
+        height: 34px;
+        bottom: 3034px;
+        left: 259px;
+        padding-left: 18px;
+        font-size: 18px;
+    }
+
+    #cantidad {
+        width: 266px;
+        height: 34px;
+        bottom: 2953px;
+        left: -618px;
+        padding-left: 18px;
+        font-size: 18px;
+    }
+
+    #valorUni {
+        width: 266px;
+        height: 33px;
+        bottom: 2953px;
+        left: -586px;
+        padding-left: 18px;
+        font-size: 18px;
+    }
+
+    #importe {
+        width: 266px;
+        height: 33px;
+        bottom: 2987px;
+        left: 798px;
+        padding-left: 18px;
+        font-size: 18px;
+    }
+
+    #descuento {
+        width: 266px;
+        height: 34px;
+        bottom: 2988px;
+        left: 833px;
+        padding-left: 18px;
+        font-size: 18px;
+    }
+
+    #objImpuesto {
+        width: 266px;
+        height: 34px;
+        bottom: 2909px;
+        left: -348px;
+        padding-left: 18px;
+        font-size: 18px;
+    }
+
+    #numeroIden {
+        width: 266px;
+        height: 34px;
+        bottom: 2941px;
+        left: -315px;
+        padding-left: 18px;
+        font-size: 18px;
+    }
+
+    #tasa {
+        width: 16px;
+        height: 16px;
+        bottom: 2668px;
+        left: -834px
+    }
+
+    #save {
+        width: 119px;
+        height: 57px;
+        bottom: 1530px;
+        left: -940px;
+    }
+    
+    .espacio2 {
+        position: relative;
+        height: 200px;
+        bottom: 1722px;
+        z-index: 0;
+        padding: 0px 138px;
+    }
+
+    .pos37sellar {
+        width: 130px;
+        height: 61px;
+        bottom: 1468px;
+        left: 150px;
+    }
+
+    
+    /* POSICION 38 */
+    #key {
+        width: 114px;
+        height: 50px;
+        bottom: 1031px;
+        left: 1150px;
+    }
+
+    #fiel {
+        width: 582px;
+        height: 30px;
+        bottom: 1317px;
+        left: 228px;
+    }
+
+    #abrir {
+        width: 114px;
+        height: 35px;
+        bottom: 980px;
+        left: 560px;
+    }
+
+    #cer {
+        width: 114px;
+        height: 50px;
+        bottom: 955px;
+        left: 1150px;
+    }
+
+    #fiel2 {
+        width: 582px;
+        height: 30px;
+        bottom: 1297px;
+        left: 228px;
+    }
+
+    #abrir2 {
+        width: 114px;
+        height: 35px;
+        bottom: 965px;
+        left: 560px;
+    }
+
+    #contrasena {
+        width: 1010px;
+        height: 28px;
+        bottom: 1094px;
+        left: 129px;
+        text-align: left;
+        padding-left: 12px;
+    }
+
+    #conf {
+        width: 130px;
+        height: 50px;
+        bottom: 904px;
+        left: 19px;
+    }
+
+    #fir {
+        width: 110px;
+        height: 50px;
+        bottom: 903px;
+        left: 142px;
+    }
+
+    #desc {
+        width: 40px;
+        height: 40px;
+        bottom: 986px;
+        left: 162px;
+    }
+
+    #vista {
+        width: 93px;
+        height: 27px;
+        bottom: 1305px;
+        left: 1082px;
+    }
+
+    /**/
+    .pos0dec {
+        width: 105px;
+        height: 90px;
+        bottom: 1100px;
+        left: 260px;
+    }
+}
